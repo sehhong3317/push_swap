@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: sehhong <sehhong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 17:37:53 by sehhong           #+#    #+#             */
-/*   Updated: 2021/09/26 12:45:21 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/10/06 16:31:49 by sehhong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }				t_list;
+
+typedef struct s_chunk_info
+{
+	int		chunk_count;
+	int		str_count;
+	int		quote_flag;
+	char	delimiter;
+}				t_chunk_info;
 
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
@@ -73,5 +81,6 @@ void			ft_ptr_free(char *ptr);
 void			ft_strcopy_with_delimiter(char *dest, char *src, char c);
 void			ft_strncpy(char *dst, char const *src, size_t src_len);
 int				ft_abs_int(int num1);
+char			**ft_split_argument(char *str);
 
 #endif

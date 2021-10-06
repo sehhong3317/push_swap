@@ -6,7 +6,7 @@
 #    By: sehhong <sehhong@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/08 17:15:30 by sehhong           #+#    #+#              #
-#    Updated: 2021/09/27 13:35:53 by sehhong          ###   ########.fr        #
+#    Updated: 2021/10/06 15:21:56 by sehhong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ FILES_M = ft_memset ft_bzero ft_memcpy ft_memccpy ft_memmove ft_memchr \
 		 ft_substr ft_strjoin ft_strtrim ft_split ft_itoa ft_strmapi \
 		 ft_putchar_fd ft_putstr_fd ft_putendl_fd ft_putnbr_fd \
 		 ft_malloc_fail_int ft_malloc_fail_str ft_ptr_free \
-		 ft_strcopy_with_delimiter ft_strncpy ft_abs_int
+		 ft_strcopy_with_delimiter ft_strncpy ft_abs_int \
+		 ft_split_argument
 
 FILES_B = ft_lstnew ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back \
 		 ft_lstdelone ft_lstclear ft_lstiter ft_lstmap
@@ -51,7 +52,6 @@ $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
 bonus:
-	sleep 1
 	make WITH_BONUS=1 all
 
 clean:
