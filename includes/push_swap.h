@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: sehhong <sehhong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 21:09:39 by sehhong           #+#    #+#             */
-/*   Updated: 2021/10/07 11:31:27 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/10/07 16:17:13 by sehhong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ int		convert_str_to_int(char *str);
 void	split_arg_and_add_node_back(char **array_of_str, t_list_mark *ls_mark);
 void	parse_arguments(int argc, char **argv, t_list_mark *ls_mark);
 void	check_duplicates(t_list_mark ls_mark);
+
+/*push_swap_operations*/
+void	swap_stack_a(t_list_mark *ls_mark);
+void	swap_stack_b(t_list_mark *ls_mark);
 
 /*print_errors_and_exit*/
 void	print_error_and_exit(void);
