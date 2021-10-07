@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_errors_and_exit.c                            :+:      :+:    :+:   */
+/*   push_swap_operations.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 21:31:04 by sehhong           #+#    #+#             */
-/*   Updated: 2021/10/07 08:01:10 by sehee            ###   ########seoul.kr  */
+/*   Created: 2021/10/07 11:37:44 by sehee             #+#    #+#             */
+/*   Updated: 2021/10/07 12:47:58 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_error_and_exit(void)
+void	swap_stack_a(t_list_mark *ls_mark)
 {
-	ft_putstr_fd("Error\n", 2);
-	exit(EXIT_FAILURE);
+	t_node	*tmp_ptr;
+
+	ls_mark->cursor = ls_mark->cursor->prev;
+	tmp_ptr = ls_mark->cursor;
+	
 }

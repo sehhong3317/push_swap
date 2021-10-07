@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list_functions.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehhong <sehhong@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:47:11 by sehhong           #+#    #+#             */
-/*   Updated: 2021/10/06 14:41:09 by sehhong          ###   ########.fr       */
+/*   Updated: 2021/10/07 11:35:42 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@ void	initiate_linked_list(t_list_mark *ls_mark)
 {
 	ls_mark->head = NULL;
 	ls_mark->tail = NULL;
+	ls_mark->cursor = NULL;
 }
 
 void	add_node_back(int data, t_list_mark *ls_mark)
 {
 	t_node	*tmp_node;
-	
+
 	tmp_node = (t_node *)malloc(sizeof(t_node));
 	if (!tmp_node)
 		return ;
@@ -30,6 +31,7 @@ void	add_node_back(int data, t_list_mark *ls_mark)
 	{
 		ls_mark->head = tmp_node;
 		ls_mark->tail = tmp_node;
+		ls_mark->cursor = ls_mark->tail;
 		tmp_node->prev = NULL;
 		tmp_node->next = NULL;
 	}
@@ -39,6 +41,7 @@ void	add_node_back(int data, t_list_mark *ls_mark)
 		tmp_node->next = NULL;
 		ls_mark->tail->next = tmp_node;
 		ls_mark->tail = tmp_node;
+		ls_mark->cursor = ls_mark->tail;
 	}
 }
 
@@ -47,11 +50,12 @@ void	print_list(t_list_mark ls_mark)
 	t_node	*curr_node;
 
 	curr_node = ls_mark.head;
-	printf("start!\n");
+	printf("start!\n\n");
 	while (curr_node != NULL)
 	{
 		printf("%d\n", curr_node->data);
 		curr_node = curr_node->next;
 	}
-	printf("end!\n");
+	printf("\n");
+	printf("end!\n\n");
 }

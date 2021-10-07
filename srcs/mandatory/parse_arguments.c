@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   parse_arguments.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehhong <sehhong@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 21:25:43 by sehhong           #+#    #+#             */
-/*   Updated: 2021/10/06 16:35:19 by sehhong          ###   ########.fr       */
+/*   Updated: 2021/10/07 10:55:34 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	convert_str_to_ull(char *str)
+int	convert_str_to_int(char *str)
 {
-	int					sign;
-	unsigned long long	ret;
-	int					digit_count;
+	int			sign;
+	long long	ret;
+	int			digit_count;
+	int			final_int;
 
 	ret = 0;
 	sign = 1;
@@ -35,20 +36,21 @@ void	convert_str_to_ull(char *str)
 		ret = ret * 10 + (*str - '0');
 		str++;
 	}
-	// if (*str || digit_count > 10 || sign * ret < -2147483648 \
-	// 	|| sign * ret > 2147483647)
-	// 	print_error_and_exit();
+	final_int = sign * ret;
+	if (*str || digit_count > 10 || final_int < -2147483648 \
+		|| final_int > 2147483647)
+		print_error_and_exit();
+	return ((int)final_int);
 }
 
-void	split_argument_and_parse_into_node(char **array_of_str, t_list_mark *ls_mark)
+void	split_arg_and_add_node_back(char **array_of_str, t_list_mark *ls_mark)
 {
-	int					idx;
+	int	idx;
 
 	idx = 0;
 	while (array_of_str[idx] != NULL)
 	{
-		convert_str_to_ull(array_of_str[idx]);
-		add_node_back(ft_atoi(array_of_str[idx]), ls_mark);
+		add_node_back(convert_str_to_int(array_of_str[idx]), ls_mark);
 		idx++;
 	}
 }
@@ -62,8 +64,30 @@ void	parse_arguments(int argc, char **argv, t_list_mark *ls_mark)
 	idx = 1;
 	while (idx < argc)
 	{
-		split_argument_and_parse_into_node(ft_split_argument(argv[idx]), ls_mark);
+		split_arg_and_add_node_back(ft_split_argument(argv[idx]), ls_mark);
 		idx++;
 	}
-	print_list(*ls_mark);
+}
+
+void	check_duplicates(t_list_mark ls_mark)
+{
+	int		data;
+	int		data_to_cmp;
+	t_node	*curr_node;
+	t_node	*cmp_node;
+
+	curr_node = ls_mark.head;
+	while(curr_node != NULL)
+	{
+		data = curr_node->data;
+		cmp_node = curr_node->next;
+		while(cmp_node != NULL)
+		{
+			data_to_cmp = cmp_node->data;
+			if (data == data_to_cmp)
+				print_error_and_exit();
+			cmp_node = cmp_node->next;
+		}
+		curr_node = curr_node->next;
+	}
 }

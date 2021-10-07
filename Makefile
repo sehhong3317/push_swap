@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sehhong <sehhong@student.42.fr>            +#+  +:+       +#+         #
+#    By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/16 11:21:01 by sehhong           #+#    #+#              #
-#    Updated: 2021/10/06 14:49:47 by sehhong          ###   ########.fr        #
+#    Updated: 2021/10/07 10:54:19 by sehee            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CC = gcc
 RM = rm -f
 AR = ar rcs
 CFLAGS = -Wall -Werror -Wextra
-INCLUDE = -I./includes
+INCLUDE = -I./includes/ -I./libft/
 
 LIBFT_DIR = ./libft/
 LIBFT_NAME = ft
