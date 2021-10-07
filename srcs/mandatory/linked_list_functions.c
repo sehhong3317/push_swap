@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list_functions.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: sehhong <sehhong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:47:11 by sehhong           #+#    #+#             */
-/*   Updated: 2021/10/07 11:35:42 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/10/07 16:22:24 by sehhong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@ void	print_list(t_list_mark ls_mark)
 	printf("start!\n\n");
 	while (curr_node != NULL)
 	{
-		printf("%d\n", curr_node->data);
+		printf("%d ", curr_node->data);
+		if (curr_node == ls_mark.cursor)
+			printf("cursor ");
 		curr_node = curr_node->next;
 	}
 	printf("\n");
