@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   linked_list_functions.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehhong <sehhong@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:47:11 by sehhong           #+#    #+#             */
-/*   Updated: 2021/10/07 16:22:24 by sehhong          ###   ########.fr       */
+/*   Updated: 2021/10/08 07:47:54 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	initiate_linked_list(t_list_mark *ls_mark)
-{
-	ls_mark->head = NULL;
-	ls_mark->tail = NULL;
-	ls_mark->cursor = NULL;
-}
 
 void	add_node_back(int data, t_list_mark *ls_mark)
 {
@@ -50,7 +43,7 @@ void	print_list(t_list_mark ls_mark)
 	t_node	*curr_node;
 
 	curr_node = ls_mark.head;
-	printf("start!\n\n");
+	printf("\n");
 	while (curr_node != NULL)
 	{
 		printf("%d ", curr_node->data);
@@ -59,5 +52,4 @@ void	print_list(t_list_mark ls_mark)
 		curr_node = curr_node->next;
 	}
 	printf("\n");
-	printf("end!\n\n");
 }

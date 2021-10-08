@@ -6,7 +6,7 @@
 #    By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/16 11:21:01 by sehhong           #+#    #+#              #
-#    Updated: 2021/10/07 10:54:19 by sehee            ###   ########seoul.kr   #
+#    Updated: 2021/10/07 23:49:46 by sehee            ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,10 +29,10 @@ LIBFT = $(LIBFT_DIR)libft.a
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $<
+	$(CC) $(CFLAGS) $(INCLUDE) -g3 -fsanitize=address -o $@ -c $<
 
 $(NAME) : $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDE) -L$(LIBFT_DIR) -l$(LIBFT_NAME) -o $@ $^
+	$(CC) $(CFLAGS) $(INCLUDE) -g3 -fsanitize=address -L$(LIBFT_DIR) -l$(LIBFT_NAME) -o $@ $^
 
 $(LIBFT):
 	make -C $(LIBFT_DIR) all
