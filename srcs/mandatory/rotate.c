@@ -6,7 +6,7 @@
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 08:23:28 by sehee             #+#    #+#             */
-/*   Updated: 2021/10/08 22:40:38 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/10/09 00:09:08 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	rotate_stack_a(t_list_mark *ls_mark)
 	int		num_of_elements;
 	t_node	*tmp_ptr;
 
-	ls_mark->swap_flag = 3;
+	if (ls_mark->swap_flag < 3)
+		ls_mark->swap_flag = 3;
 	num_of_elements = count_elements_in_stack_a(ls_mark);
 	if (num_of_elements < 2)
 	{	
@@ -48,6 +49,7 @@ void	rotate_stack_b(t_list_mark *ls_mark)
 	int		num_of_elements;
 	t_node	*tmp_ptr;
 
+	if (ls_mark->swap_flag < 4)
 	ls_mark->swap_flag = 4;
 	num_of_elements = count_elements_in_stack_b(ls_mark);
 	if (num_of_elements < 2)

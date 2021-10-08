@@ -6,7 +6,7 @@
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 21:09:39 by sehhong           #+#    #+#             */
-/*   Updated: 2021/10/08 22:39:56 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/10/09 00:34:08 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,11 @@ void	swap_stack_a_and_b(t_list_mark *ls_mark);
 void	rotate_stack_a(t_list_mark *ls_mark);
 void	rotate_stack_b(t_list_mark *ls_mark);
 void	rotate_stack_a_and_b(t_list_mark *ls_mark);
+
+/*reverse_rotate*/
+void	reverse_rotate_stack_a(t_list_mark *ls_mark);
+void	reverse_rotate_stack_b(t_list_mark *ls_mark);
+void	reverse_rotate_stack_a_and_b(t_list_mark *ls_mark);
 
 /*print_errors_and_exit*/
 void	print_error_and_exit(void);
