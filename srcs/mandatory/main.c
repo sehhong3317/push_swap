@@ -6,7 +6,7 @@
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 21:11:29 by sehhong           #+#    #+#             */
-/*   Updated: 2021/10/09 00:43:51 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/10/09 17:54:07 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,11 @@ int	main(int argc, char **argv)
 
 	ft_memset(&ls_mark, 0, sizeof((ls_mark)));
 	parse_arguments(argc, argv, &ls_mark);
-	print_list(ls_mark);
 	check_duplicates(ls_mark);
 	printf("\n");
-	ls_mark.cursor = ls_mark.cursor->prev->prev;
+	ls_mark.cursor = ls_mark.head->next->next;
 	print_list(ls_mark);
-	// swap_stack_a(&ls_mark);
-	// print_list(ls_mark);
-	// swap_stack_b(&ls_mark);
-	// print_list(ls_mark);
-	// swap_stack_a_and_b(&ls_mark);
-	// print_list(ls_mark);
-	// rotate_stack_a(&ls_mark);
-	// print_list(ls_mark);
-	// rotate_stack_b(&ls_mark);
-	// print_list(ls_mark);
-	rotate_stack_a_and_b(&ls_mark);
-	print_list(ls_mark);
-	reverse_rotate_stack_a(&ls_mark);
-	print_list(ls_mark);
-	reverse_rotate_stack_b(&ls_mark);
-	print_list(ls_mark);
-	reverse_rotate_stack_a_and_b(&ls_mark);
+	merge_to_stack_b(&ls_mark, 3, 3, 4);
 	print_list(ls_mark);
 	return (0);
 }

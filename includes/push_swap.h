@@ -6,7 +6,7 @@
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 21:09:39 by sehhong           #+#    #+#             */
-/*   Updated: 2021/10/09 00:34:08 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/10/09 15:17:54 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ typedef struct s_list_mark
 	t_node	*head;
 	t_node	*tail;
 	t_node	*cursor;
+	t_node	*middle_chunk;
 	int		swap_flag;
-	int		rotate_flag;
-	int		reverse_rotate_flag;
 }				t_list_mark;
 
 /*linked_list_functions*/
@@ -56,6 +55,10 @@ void	swap_stack_a(t_list_mark *ls_mark);
 void	swap_stack_b(t_list_mark *ls_mark);
 void	swap_stack_a_and_b(t_list_mark *ls_mark);
 
+/*push*/
+void	push_to_stack_a(t_list_mark *ls_mark);
+void	push_to_stack_b(t_list_mark *ls_mark);
+
 /*rotate*/
 void	rotate_stack_a(t_list_mark *ls_mark);
 void	rotate_stack_b(t_list_mark *ls_mark);
@@ -65,6 +68,12 @@ void	rotate_stack_a_and_b(t_list_mark *ls_mark);
 void	reverse_rotate_stack_a(t_list_mark *ls_mark);
 void	reverse_rotate_stack_b(t_list_mark *ls_mark);
 void	reverse_rotate_stack_a_and_b(t_list_mark *ls_mark);
+
+/*merge_to_stack_b*/
+int		find_max(int num1, int num2, int num3);
+t_node	*choose_which_chunk(int num1, int num2, int num3, t_list_mark *ls_mark);
+void	merge_to_stack_b(t_list_mark *ls_mark, int chunk1, int chunk2, \
+	int chunk3);
 
 /*print_errors_and_exit*/
 void	print_error_and_exit(void);
