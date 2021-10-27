@@ -6,27 +6,27 @@
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 08:23:28 by sehee             #+#    #+#             */
-/*   Updated: 2021/10/09 00:09:08 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/10/12 15:51:51 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate_stack_a(t_list_mark *ls_mark)
+void	ra(t_list_mark *ls_mark)
 {
 	int		num_of_elements;
 	t_node	*tmp_ptr;
 
-	if (ls_mark->swap_flag < 3)
-		ls_mark->swap_flag = 3;
+	if (ls_mark->op_flag < 3)
+		ls_mark->op_flag = 3;
 	num_of_elements = count_elements_in_stack_a(ls_mark);
 	if (num_of_elements < 2)
 	{	
-		ls_mark->swap_flag = 0;
+		ls_mark->op_flag = 0;
 		return ;
 	}
 	else if (num_of_elements == 2)
-		swap_stack_a(ls_mark);
+		sa(ls_mark);
 	else
 	{
 		tmp_ptr = ls_mark->cursor->prev;
@@ -44,21 +44,21 @@ void	rotate_stack_a(t_list_mark *ls_mark)
 	check_flag_and_print(3, "ra\n", ls_mark);
 }
 
-void	rotate_stack_b(t_list_mark *ls_mark)
+void	rb(t_list_mark *ls_mark)
 {
 	int		num_of_elements;
 	t_node	*tmp_ptr;
 
-	if (ls_mark->swap_flag < 4)
-	ls_mark->swap_flag = 4;
+	if (ls_mark->op_flag < 4)
+	ls_mark->op_flag = 4;
 	num_of_elements = count_elements_in_stack_b(ls_mark);
 	if (num_of_elements < 2)
 	{
-		ls_mark->swap_flag = 0;
+		ls_mark->op_flag = 0;
 		return ;
 	}
 	else if (num_of_elements == 2)
-		swap_stack_b(ls_mark);
+		sb(ls_mark);
 	else
 	{
 		if (ls_mark->cursor == NULL)
@@ -80,12 +80,12 @@ void	rotate_stack_b(t_list_mark *ls_mark)
 	check_flag_and_print(4, "rb\n", ls_mark);
 }
 
-void	rotate_stack_a_and_b(t_list_mark *ls_mark)
+void	rr(t_list_mark *ls_mark)
 {
 	if (count_elements_in_stack_a(ls_mark) >= 2 \
 		&& count_elements_in_stack_b(ls_mark) >= 2)
 	{
-		ls_mark->swap_flag = 5;
+		ls_mark->op_flag = 5;
 		rotate_stack_a(ls_mark);
 		rotate_stack_b(ls_mark);
 		check_flag_and_print(5, "rr\n", ls_mark);

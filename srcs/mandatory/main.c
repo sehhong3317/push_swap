@@ -6,7 +6,7 @@
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 21:11:29 by sehhong           #+#    #+#             */
-/*   Updated: 2021/10/09 17:54:07 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/10/12 15:23:29 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int argc, char **argv)
 {
 	t_list_mark	ls_mark;
-	//t_node		*tmp_ptr;
 
 	ft_memset(&ls_mark, 0, sizeof((ls_mark)));
 	parse_arguments(argc, argv, &ls_mark);
