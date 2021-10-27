@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: sehhong <sehhong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 11:37:44 by sehee             #+#    #+#             */
-/*   Updated: 2021/10/12 15:43:47 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/10/27 15:00:51 by sehhong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,18 @@ void	sb(t_list_mark *ls_mark)
 		ls_mark->cursor->next->data = tmp_data;
 	}
 	check_flag_and_print(1, "sb\n", ls_mark);
+}
+
+void	ss(t_list_mark *ls_mark)
+{
+	if (count_elements_in_stack_a(ls_mark) >= 2 \
+		&& count_elements_in_stack_b(ls_mark) >= 2)
+	{
+		ls_mark->op_flag = 2;
+		sa(ls_mark);
+		sb(ls_mark);
+		check_flag_and_print(2, "ss\n", ls_mark);
+	}
 }
 
 // void	swap_stack_a(t_list_mark *ls_mark)
@@ -132,14 +144,3 @@ void	sb(t_list_mark *ls_mark)
 // 	check_flag_and_print(1, "sb\n", ls_mark);
 // }
 
-// void	swap_stack_a_and_b(t_list_mark *ls_mark)
-// {
-// 	if (count_elements_in_stack_a(ls_mark) >= 2 \
-// 		&& count_elements_in_stack_b(ls_mark) >= 2)
-// 	{
-// 		ls_mark->op_flag = 2;
-// 		swap_stack_a(ls_mark);
-// 		swap_stack_b(ls_mark);
-// 		check_flag_and_print(2, "ss\n", ls_mark);
-// 	}
-// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: sehhong <sehhong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 10:45:39 by sehee             #+#    #+#             */
-/*   Updated: 2021/10/12 17:03:17 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/10/27 16:07:43 by sehhong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	sort_skip_3_numbers(int num_of_nums, t_list_mark *ls_mark, int order)
 
 }
 
-void	sort_fix_3_numbers(Int num_of_nums, t_list_mark *ls_mark, int order)
+void	sort_fix_3_numbers(int num_of_nums, t_list_mark *ls_mark, int order)
 {
 	
 }

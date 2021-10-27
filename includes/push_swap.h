@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: sehhong <sehhong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 21:09:39 by sehhong           #+#    #+#             */
-/*   Updated: 2021/10/12 16:08:19 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/10/27 15:01:31 by sehhong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		count_elements_in_stack_b(t_list_mark *ls_mark);
 /*swap*/
 void	sa(t_list_mark *ls_mark);
 void	sb(t_list_mark *ls_mark);
-//void	swap_stack_a_and_b(t_list_mark *ls_mark);
+void	ss(t_list_mark *ls_mark);
 
 /*push*/
 void	pa(t_list_mark *ls_mark);
