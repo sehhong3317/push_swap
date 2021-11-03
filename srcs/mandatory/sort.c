@@ -6,7 +6,7 @@
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 10:45:39 by sehee             #+#    #+#             */
-/*   Updated: 2021/11/02 21:17:23 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/11/04 03:49:36 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,12 @@ void	final_sort(int num_of_nums, t_list_mark *ls_mark)
 
 	chunk1 = num_of_nums / 3;
 	chunk2 = chunk1 + num_of_nums % 3;
-	if (num_of_nums <= 3)
-		sort_fix_lt_4_numbers(num_of_nums, ls_mark, DESCEND);
+	if (num_of_nums == 2)
+		sort_fix_2_numbers(ls_mark, DESCEND);
+	else if (num_of_nums == 3)
+		sort_fix_3_numbers(ls_mark);
+	else if (num_of_nums >= 4 && num_of_nums <= 5)
+		sort_fix_4_or_5_numbers(ls_mark, num_of_nums);
 	else
 	{	
 		sort_skip(chunk2, ls_mark, ASCEND);

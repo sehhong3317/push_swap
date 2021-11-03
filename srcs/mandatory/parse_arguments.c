@@ -6,20 +6,20 @@
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 21:25:43 by sehhong           #+#    #+#             */
-/*   Updated: 2021/10/31 18:08:07 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/11/04 02:51:59 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	split_arg_and_add_node_back(char **array_of_str, t_list_mark *ls_mark)
+void	split_arg_and_add_node_front(char **array_of_str, t_list_mark *ls_mark)
 {
 	int	idx;
 
 	idx = 0;
 	while (array_of_str[idx] != NULL)
 	{
-		add_node_back(ft_str_to_int(array_of_str[idx]), ls_mark);
+		add_node_front(ft_str_to_int(array_of_str[idx]), ls_mark);
 		idx++;
 	}
 }
@@ -29,16 +29,16 @@ void	parse_arguments(int argc, char **argv, t_list_mark *ls_mark)
 	int	idx;
 
 	if (argc == 1)
-		ft_print_error_and_exit();
+		exit(EXIT_SUCCESS);
 	idx = 1;
 	while (idx < argc)
 	{
-		split_arg_and_add_node_back(ft_split_argument(argv[idx]), ls_mark);
+		split_arg_and_add_node_front(ft_split_argument(argv[idx]), ls_mark);
 		idx++;
 	}
 }
 
-void	check_duplicates(t_list_mark ls_mark)
+void	check_if_duplicated(t_list_mark ls_mark)
 {
 	int		data;
 	int		data_to_cmp;
@@ -59,4 +59,18 @@ void	check_duplicates(t_list_mark ls_mark)
 		}
 		curr_node = curr_node->next;
 	}
+}
+
+void	check_if_already_sorted(t_list_mark ls_mark)
+{
+	t_node	*tmp_ptr;
+
+	tmp_ptr = ls_mark.head;
+	while (tmp_ptr != ls_mark.tail)
+	{
+		if (tmp_ptr->data < tmp_ptr->next->data)
+			return ;
+		tmp_ptr = tmp_ptr->next;
+	}
+	exit(EXIT_SUCCESS);
 }

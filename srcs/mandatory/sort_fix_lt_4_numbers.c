@@ -6,7 +6,7 @@
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 01:26:52 by sehee             #+#    #+#             */
-/*   Updated: 2021/11/03 12:09:18 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/11/04 03:49:25 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,26 @@ void	sort_fix_lt_4_numbers(int num_of_nums, t_list_mark *ls_mark, int order)
 		sort_fix_3_numbers_ascend(ls_mark);
 	else if (num_of_nums == 3 && order)
 		sort_fix_3_numbers_descend(ls_mark);
+}
+
+void	sort_fix_3_numbers(t_list_mark *ls_mark)
+{
+	int	num1;
+	int	num2;
+	int	num3;
+	int	max;
+
+	num1 = ls_mark->head->data;
+	num2 = ls_mark->head->next->data;
+	num3 = ls_mark->cursor->data;
+	max = ft_find_max(num1, num2, num3);
+	if (num1 > num2 && num2 > num3)
+		return ;
+	if (max == num1 && num2 < num3)
+		sa(ls_mark);
+	else if (max == num2)
+		rra(ls_mark);
+	else
+		ra(ls_mark);
+	sort_fix_3_numbers(ls_mark);
 }

@@ -6,7 +6,7 @@
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:47:11 by sehhong           #+#    #+#             */
-/*   Updated: 2021/11/03 12:15:27 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/11/04 05:13:29 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	count_elements_in_stack_b(t_list_mark *ls_mark)
 	return (num_of_elements);
 }
 
-void	add_node_back(int data, t_list_mark *ls_mark)
+void	add_node_front(int data, t_list_mark *ls_mark)
 {
 	t_node	*tmp_node;
 
@@ -94,6 +94,6 @@ void	check_flag_and_print(int flag, char *str, t_list_mark *ls_mark)
 	{
 		ft_putstr_fd(str, 1);
 		ls_mark->op_flag = 0;
-		//print_list(*ls_mark);
+		print_list(*ls_mark);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 21:09:39 by sehhong           #+#    #+#             */
-/*   Updated: 2021/11/01 05:06:38 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/11/04 03:54:07 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,15 @@ int		move_element1(int chunk, t_node *next_node, t_list_mark *ls_mark, \
 /*linked_list_functions*/
 int		count_elements_in_stack_a(t_list_mark *ls_mark);
 int		count_elements_in_stack_b(t_list_mark *ls_mark);
-void	add_node_back(int data, t_list_mark *ls_mark);
+void	add_node_front(int data, t_list_mark *ls_mark);
 void	print_list(t_list_mark ls_mark);
 void	check_flag_and_print(int flag, char *str, t_list_mark *ls_mark);
 
 /*parse_arguments*/
-void	split_arg_and_add_node_back(char **array_of_str, t_list_mark *ls_mark);
+void	split_arg_and_add_node_front(char **array_of_str, t_list_mark *ls_mark);
 void	parse_arguments(int argc, char **argv, t_list_mark *ls_mark);
-void	check_duplicates(t_list_mark ls_mark);
+void	check_if_duplicated(t_list_mark ls_mark);
+void	check_if_already_sorted(t_list_mark ls_mark);
 
 /*swap*/
 void	sa(t_list_mark *ls_mark);
@@ -90,12 +91,18 @@ void	sort_fix_2_numbers(t_list_mark *ls_mark, int order);
 void	sort_fix_3_numbers_ascend(t_list_mark *ls_mark);
 void	sort_fix_3_numbers_descend(t_list_mark *ls_mark);
 void	sort_fix_lt_4_numbers(int num_of_nums, t_list_mark *ls_mark, int order);
+void	sort_fix_3_numbers(t_list_mark *ls_mark);
 
 /*sort_skip_lt_4_numbers*/
 void	sort_skip_3_numbers_ascend(t_list_mark *ls_mark);
 void	sort_skip_3_numbers_descend(t_list_mark *ls_mark);
 void	sort_skip_lt_4_numbers(int num_of_nums, t_list_mark *ls_mark, \
 	int order);
+
+/*sort_fix_4_or_5_numbers*/
+void	sort_fix_4_numbers(int max, t_list_mark *ls_mark);
+void	sort_fix_5_numbers(int max, t_list_mark *ls_mark);
+void	sort_fix_4_or_5_numbers(t_list_mark *ls_mark, int num_of_nums);
 
 /*sort*/
 void	rr_and_rb(int rr_count, int rb_count, t_list_mark *ls_mark);
