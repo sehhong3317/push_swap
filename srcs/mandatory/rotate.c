@@ -6,11 +6,24 @@
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 08:23:28 by sehee             #+#    #+#             */
-/*   Updated: 2021/10/12 15:51:51 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/11/01 21:30:22 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	rotate_lt_3(int num_of_elements, int a_or_b, t_list_mark *ls_mark)
+{
+	if (num_of_elements < 2)
+	{
+		ls_mark->op_flag = 0;
+		return ;
+	}
+	if (a_or_b == 1)
+		sa(ls_mark);
+	else
+		sb(ls_mark);
+}
 
 void	ra(t_list_mark *ls_mark)
 {
@@ -20,13 +33,8 @@ void	ra(t_list_mark *ls_mark)
 	if (ls_mark->op_flag < 3)
 		ls_mark->op_flag = 3;
 	num_of_elements = count_elements_in_stack_a(ls_mark);
-	if (num_of_elements < 2)
-	{	
-		ls_mark->op_flag = 0;
-		return ;
-	}
-	else if (num_of_elements == 2)
-		sa(ls_mark);
+	if (num_of_elements <= 2)
+		rotate_lt_3(num_of_elements, 1, ls_mark);
 	else
 	{
 		tmp_ptr = ls_mark->cursor->prev;
@@ -38,10 +46,24 @@ void	ra(t_list_mark *ls_mark)
 		ls_mark->head->prev = ls_mark->cursor;
 		ls_mark->head = ls_mark->head->prev;
 		ls_mark->cursor = tmp_ptr;
-		if (ls_mark->cursor == ls_mark->head)
+		if (ls_mark->tail == ls_mark->head)
 			ls_mark->tail = ls_mark->cursor;
 	}
 	check_flag_and_print(3, "ra\n", ls_mark);
+}
+
+static void	move_in_rb(t_list_mark *ls_mark, t_node **tmp_ptr)
+{
+	if (ls_mark->cursor == NULL)
+	{	
+		*tmp_ptr = ls_mark->head;
+		ls_mark->head = ls_mark->head->next;
+	}
+	else
+	{	
+		*tmp_ptr = ls_mark->cursor->next;
+		ls_mark->cursor->next = (*tmp_ptr)->next;
+	}	
 }
 
 void	rb(t_list_mark *ls_mark)
@@ -50,27 +72,13 @@ void	rb(t_list_mark *ls_mark)
 	t_node	*tmp_ptr;
 
 	if (ls_mark->op_flag < 4)
-	ls_mark->op_flag = 4;
+		ls_mark->op_flag = 4;
 	num_of_elements = count_elements_in_stack_b(ls_mark);
-	if (num_of_elements < 2)
-	{
-		ls_mark->op_flag = 0;
-		return ;
-	}
-	else if (num_of_elements == 2)
-		sb(ls_mark);
+	if (num_of_elements <= 2)
+		rotate_lt_3(num_of_elements, 2, ls_mark);
 	else
 	{
-		if (ls_mark->cursor == NULL)
-		{	
-			tmp_ptr = ls_mark->head;
-			ls_mark->head = ls_mark->head->next;
-		}
-		else
-		{	
-			tmp_ptr = ls_mark->cursor->next;
-			ls_mark->cursor->next = tmp_ptr->next;
-		}
+		move_in_rb(ls_mark, &tmp_ptr);
 		tmp_ptr->next->prev = ls_mark->cursor;
 		tmp_ptr->prev = ls_mark->tail;
 		ls_mark->tail->next = tmp_ptr;
@@ -86,8 +94,8 @@ void	rr(t_list_mark *ls_mark)
 		&& count_elements_in_stack_b(ls_mark) >= 2)
 	{
 		ls_mark->op_flag = 5;
-		rotate_stack_a(ls_mark);
-		rotate_stack_b(ls_mark);
+		ra(ls_mark);
+		rb(ls_mark);
 		check_flag_and_print(5, "rr\n", ls_mark);
 	}
 }

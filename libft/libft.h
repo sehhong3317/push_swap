@@ -6,7 +6,7 @@
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 17:37:53 by sehhong           #+#    #+#             */
-/*   Updated: 2021/10/07 07:35:34 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/10/31 18:04:13 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,9 @@ void			ft_strcopy_with_delimiter(char *dest, char *src, char c);
 void			ft_strncpy(char *dst, char const *src, size_t src_len);
 int				ft_abs_int(int num1);
 char			**ft_split_argument(char *str);
+int				ft_find_max(int num1, int num2, int num3);
+int				ft_find_min(int num1, int num2, int num3);
+int				ft_str_to_int(char *str);
+void			ft_print_error_and_exit(void);
 
 #endif

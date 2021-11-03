@@ -3,51 +3,80 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehhong <sehhong@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 11:37:44 by sehee             #+#    #+#             */
-/*   Updated: 2021/10/27 15:00:51 by sehhong          ###   ########.fr       */
+/*   Updated: 2021/11/02 13:19:56 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static void	move_in_sa(t_list_mark *ls_mark, int num_of_elements, \
+	t_node *tmp_ptr)
+{
+	tmp_ptr->next = ls_mark->cursor->next;
+	if (num_of_elements > 2)
+	{
+		ls_mark->cursor->prev = tmp_ptr->prev;
+		tmp_ptr->prev->next = ls_mark->cursor;
+	}
+	tmp_ptr->prev = ls_mark->cursor;
+	ls_mark->cursor->next = tmp_ptr;
+	tmp_ptr->next->prev = tmp_ptr;
+	if (num_of_elements == 2)
+	{	
+		ls_mark->cursor->prev = NULL;
+		ls_mark->head = ls_mark->cursor;
+	}
+	ls_mark->cursor = tmp_ptr;
+}
+
 void	sa(t_list_mark *ls_mark)
 {
-	int	num_of_elements;
-	int	tmp_data;
+	t_node	*tmp_ptr;
+	int		num_of_elements;
 
 	num_of_elements = count_elements_in_stack_a(ls_mark);
 	if (num_of_elements < 2)
 		return ;
+	tmp_ptr = ls_mark->cursor->prev;
+	if (ls_mark->cursor != ls_mark->tail)
+		move_in_sa(ls_mark, num_of_elements, tmp_ptr);
 	else
 	{
-		tmp_data = ls_mark->cursor->data;
-		ls_mark->cursor->data = ls_mark->cursor->prev->data;
-		ls_mark->cursor->prev->data = tmp_data;
+		ls_mark->cursor->prev = tmp_ptr->prev;
+		if (num_of_elements > 2)
+			tmp_ptr->prev->next = ls_mark->cursor;
+		tmp_ptr->prev = ls_mark->cursor;
+		ls_mark->cursor->next = tmp_ptr;
+		tmp_ptr->next = NULL;
+		ls_mark->tail = tmp_ptr;
+		ls_mark->cursor = tmp_ptr;
+		if (num_of_elements == 2)
+			ls_mark->head = tmp_ptr->prev;
 	}
 	check_flag_and_print(0, "sa\n", ls_mark);
 }
 
 void	sb(t_list_mark *ls_mark)
 {
-	int	num_of_elements;
-	int	tmp_data;
+	int		num_of_elements;
 
 	if (!ls_mark->op_flag)
 		ls_mark->op_flag = 1;
 	num_of_elements = count_elements_in_stack_b(ls_mark);
 	if (num_of_elements < 2)
-	{
+	{	
 		ls_mark->op_flag = 0;
 		return ;
 	}
+	if (ls_mark->cursor != NULL)
+		ls_mark->cursor = ls_mark->cursor->next->next;
 	else
-	{
-		tmp_data = ls_mark->cursor->next->next->data;
-		ls_mark->cursor->next->next->data = ls_mark->cursor->next->data;
-		ls_mark->cursor->next->data = tmp_data;
-	}
+		ls_mark->cursor = ls_mark->head->next;
+	sa(ls_mark);
+	ls_mark->cursor = ls_mark->cursor->prev->prev;
 	check_flag_and_print(1, "sb\n", ls_mark);
 }
 
@@ -62,85 +91,3 @@ void	ss(t_list_mark *ls_mark)
 		check_flag_and_print(2, "ss\n", ls_mark);
 	}
 }
-
-// void	swap_stack_a(t_list_mark *ls_mark)
-// {
-// 	t_node	*tmp_ptr;
-// 	int		num_of_elements;
-
-// 	num_of_elements = count_elements_in_stack_a(ls_mark);
-// 	if (num_of_elements < 2)
-// 		return ;
-// 	else if (num_of_elements == 2)
-// 	{
-// 		if (ls_mark->cursor == ls_mark->tail)
-// 		{
-// 			ls_mark->tail->next = ls_mark->head;
-// 			ls_mark->head->prev = ls_mark->tail;
-// 			ls_mark->head->next = NULL;
-// 			ls_mark->tail->prev = NULL;
-// 			ls_mark->tail = ls_mark->head;
-// 			ls_mark->head = ls_mark->cursor;
-// 			ls_mark->cursor = ls_mark->tail;
-// 		}
-// 		else
-// 		{
-// 			tmp_ptr = ls_mark->cursor->prev;
-// 			tmp_ptr->next = ls_mark->cursor->next;
-// 			ls_mark->cursor->next->prev = tmp_ptr;
-// 			ls_mark->cursor->next = tmp_ptr;
-// 			tmp_ptr->prev = ls_mark->cursor;
-// 			ls_mark->cursor->prev = NULL;
-// 			ls_mark->head = ls_mark->cursor;
-// 			ls_mark->cursor = tmp_ptr;
-// 		}
-// 	}
-// 	else
-// 	{
-// 		if (ls_mark->cursor != ls_mark->tail)
-// 		{
-// 			tmp_ptr = ls_mark->cursor->prev;
-// 			tmp_ptr->next = ls_mark->cursor->next;
-// 			ls_mark->cursor->prev = tmp_ptr->prev;
-// 			tmp_ptr->prev->next = ls_mark->cursor;
-// 			ls_mark->cursor->next->prev = tmp_ptr;
-// 			ls_mark->cursor->next = tmp_ptr;
-// 			tmp_ptr->prev = ls_mark->cursor;
-// 			ls_mark->cursor = tmp_ptr;
-// 		}
-// 		else
-// 		{
-// 			tmp_ptr = ls_mark->cursor->prev;
-// 			ls_mark->cursor->prev = tmp_ptr->prev;
-// 			tmp_ptr->prev->next = ls_mark->cursor;
-// 			tmp_ptr->prev = ls_mark->cursor;
-// 			ls_mark->cursor->next = tmp_ptr;
-// 			tmp_ptr->next = NULL;
-// 			ls_mark->tail = tmp_ptr;
-// 			ls_mark->cursor = tmp_ptr;
-// 		}
-// 	}
-// 	check_flag_and_print(0, "sa\n", ls_mark);
-// }
-
-// void	swap_stack_b(t_list_mark *ls_mark)
-// {
-// 	int		num_of_elements;
-
-// 	if (!ls_mark->swap_flag)
-// 		ls_mark->swap_flag = 1;
-// 	num_of_elements = count_elements_in_stack_b(ls_mark);
-// 	if (num_of_elements < 2)
-// 	{	
-// 		ls_mark->swap_flag = 0;
-// 		return ;
-// 	}
-// 	if (ls_mark->cursor != NULL)
-// 		ls_mark->cursor = ls_mark->cursor->next->next;
-// 	else
-// 		ls_mark->cursor = ls_mark->head->next;
-// 	swap_stack_a(ls_mark);
-// 	ls_mark->cursor = ls_mark->cursor->prev->prev;
-// 	check_flag_and_print(1, "sb\n", ls_mark);
-// }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sehhong <sehhong@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 21:09:39 by sehhong           #+#    #+#             */
-/*   Updated: 2021/10/27 15:01:31 by sehhong          ###   ########.fr       */
+/*   Updated: 2021/11/01 05:06:38 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,27 @@ typedef struct s_list_mark
 	int		op_flag;
 }				t_list_mark;
 
+/*choose_max_chunk*/
+t_node	*choose_max_chunk(int num1, int num2, int num3, t_list_mark *ls_mark);
+int		move_element2(int chunk, t_node *next_node, t_list_mark *ls_mark, \
+	int chunk_case);
+
+/*choose_min_chunk*/
+t_node	*choose_min_chunk(int num1, int num2, int num3, t_list_mark *ls_mark);
+int		move_element1(int chunk, t_node *next_node, t_list_mark *ls_mark, \
+	int chunk_case);
+
 /*linked_list_functions*/
+int		count_elements_in_stack_a(t_list_mark *ls_mark);
+int		count_elements_in_stack_b(t_list_mark *ls_mark);
 void	add_node_back(int data, t_list_mark *ls_mark);
 void	print_list(t_list_mark ls_mark);
+void	check_flag_and_print(int flag, char *str, t_list_mark *ls_mark);
 
 /*parse_arguments*/
-int		convert_str_to_int(char *str);
 void	split_arg_and_add_node_back(char **array_of_str, t_list_mark *ls_mark);
 void	parse_arguments(int argc, char **argv, t_list_mark *ls_mark);
 void	check_duplicates(t_list_mark ls_mark);
-
-/*count_elements_in_stack*/
-int		count_elements_in_stack_a(t_list_mark *ls_mark);
-int		count_elements_in_stack_b(t_list_mark *ls_mark);
 
 /*swap*/
 void	sa(t_list_mark *ls_mark);
@@ -71,14 +79,28 @@ void	rra(t_list_mark *ls_mark);
 void	rrb(t_list_mark *ls_mark);
 void	rrr(t_list_mark *ls_mark);
 
-/*merge_to_stack_b*/
-// int		find_max(int num1, int num2, int num3);
-// t_node	*choose_which_chunk(int num1, int num2, int num3, t_list_mark *ls_mark);
-// void	merge_to_stack_b(t_list_mark *ls_mark, int chunk1, int chunk2, \
-// 	int chunk3);
+/*merge*/
+void	merge_to_stack_a(int num_of_nums, t_list_mark *ls_mark, int order);
+void	merge_to_stack_b(int num_of_nums, t_list_mark *ls_mark, int order);
 
 /*print_errors_and_exit*/
-void	print_error_and_exit(void);
-void	check_flag_and_print(int flag, char *str, t_list_mark *ls_mark);
+
+/*sort_fix_lt_4_numbers*/
+void	sort_fix_2_numbers(t_list_mark *ls_mark, int order);
+void	sort_fix_3_numbers_ascend(t_list_mark *ls_mark);
+void	sort_fix_3_numbers_descend(t_list_mark *ls_mark);
+void	sort_fix_lt_4_numbers(int num_of_nums, t_list_mark *ls_mark, int order);
+
+/*sort_skip_lt_4_numbers*/
+void	sort_skip_3_numbers_ascend(t_list_mark *ls_mark);
+void	sort_skip_3_numbers_descend(t_list_mark *ls_mark);
+void	sort_skip_lt_4_numbers(int num_of_nums, t_list_mark *ls_mark, \
+	int order);
+
+/*sort*/
+void	rr_and_rb(int rr_count, int rb_count, t_list_mark *ls_mark);
+void	sort_skip(int num_of_nums, t_list_mark *ls_mark, int order);
+void	sort_fix(int num_of_nums, t_list_mark *ls_mark, int order);
+void	final_sort(int num_of_nums, t_list_mark *ls_mark);
 
 #endif
