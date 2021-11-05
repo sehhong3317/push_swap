@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linked_list_functions.c                            :+:      :+:    :+:   */
+/*   linked_list_functions_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:47:11 by sehhong           #+#    #+#             */
-/*   Updated: 2021/11/05 15:47:25 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/11/05 00:27:19 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	count_elements_in_stack_a(t_list_mark *ls_mark)
 {
@@ -69,14 +69,5 @@ void	add_node_front(int data, t_list_mark *ls_mark)
 		tmp_node->prev = NULL;
 		ls_mark->head->prev = tmp_node;
 		ls_mark->head = tmp_node;
-	}
-}
-
-void	check_flag_and_print(int flag, char *str, t_list_mark *ls_mark)
-{
-	if (ls_mark->op_flag == flag)
-	{
-		ft_putstr_fd(str, STDOUT_FD);
-		ls_mark->op_flag = 0;
 	}
 }

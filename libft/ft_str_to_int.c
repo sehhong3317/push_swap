@@ -6,13 +6,13 @@
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 17:44:58 by sehee             #+#    #+#             */
-/*   Updated: 2021/10/31 18:09:23 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/11/04 15:06:47 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	is_valid_int(char *str, int digit_count, int final_int)
+static void	is_valid_int(char *str, int digit_count, long long final_int)
 {
 	if (*str || digit_count > 10 || final_int < -2147483648 \
 		|| final_int > 2147483647)
@@ -24,7 +24,7 @@ int	ft_str_to_int(char *str)
 	int			sign;
 	long long	ret;
 	int			digit_count;
-	int			final_int;
+	long long	final_int;
 
 	ret = 0;
 	sign = 1;

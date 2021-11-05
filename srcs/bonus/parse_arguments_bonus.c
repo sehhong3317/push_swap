@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_arguments.c                                  :+:      :+:    :+:   */
+/*   parse_arguments_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehee <sehee@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 21:25:43 by sehhong           #+#    #+#             */
-/*   Updated: 2021/11/05 14:56:16 by sehee            ###   ########seoul.kr  */
+/*   Updated: 2021/11/05 15:48:29 by sehee            ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 void	split_arg_and_add_node_front(char **array_of_str, t_list_mark *ls_mark)
 {
@@ -76,5 +76,6 @@ void	check_if_already_sorted(t_list_mark ls_mark)
 			return ;
 		tmp_ptr = tmp_ptr->next;
 	}
+	ft_putstr_fd("OK\n", STDOUT_FD);
 	exit(EXIT_SUCCESS);
 }
